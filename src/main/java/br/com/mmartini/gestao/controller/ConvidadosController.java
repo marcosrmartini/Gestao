@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.mmartini.festa.model.Convidado;
-import br.com.mmartini.festa.repository.Convidados;
+import br.com.mmartini.gestao.model.Convidado;
+import br.com.mmartini.gestao.repository.Convidados;
+
+
 
 @Controller
 @RequestMapping("/convidados")
