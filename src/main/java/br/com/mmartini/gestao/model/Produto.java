@@ -1,5 +1,6 @@
 package br.com.mmartini.gestao.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -10,8 +11,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Produto {
+public class Produto implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 	private Long idProduto;
