@@ -17,24 +17,29 @@
 </head>
 <body>
 
+<br/><br/><br/><br/>
 
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Cadastro
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#" th:href="@{cadastro/fabricante}">Fabricante</a>
-          <a class="dropdown-item" href="#">Fornecedor</a>
-          <a class="dropdown-item" href="#">Produto</a>
-          <a class="dropdown-item" href="#">Tabela de preço</a>
-        </div>
-      </li>
-    </ul>
-  </div>
+<nav class="navbar navbar-default" role="navigation">
+   <div class="container">
+   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+         <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Cadastros<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+               <li><a href="#" th:href="@{cadastro/fabricante}">Fabricante</a></li>
+               <li><a href="#">Fornecedor</a></li>
+               <li><a href="#">Produto</a></li>
+               <li class="divider"></li>
+               <li><a href="#">Tabela de preço</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Fale Conosco</a></li>
+       </ul>
+    </div><!-- /.navbar-collapse -->
+                                              
+    </div>
 </nav>
+
 
 </body>
 </html>
