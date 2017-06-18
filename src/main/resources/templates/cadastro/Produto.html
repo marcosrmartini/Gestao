@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Cadastro de produtos</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+<script type="text/javascript" src="webjars/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" th:src="@{/js/global.js}"></script>
+
+</head>
+<body>
+	
+	<form class="form-inline" method="POST" th:object="${produto}"
+		th:action="@{/cadastro/produto}" style="margin: 20px 0">
+		<div class="form-group">
+			<input type="hidden" class="form-control" placeholder="Id"
+				th:field="*{idProduto}" /> 
+			<input type="text" class="form-control" placeholder="Descrição"
+				th:field="*{descricao}" /> 
+				
+			<select class="form-control" placeholder="Fabricante" th:field="*{fabricante}" th:remove="all-but-first">
+                <option th:each="fabricante : ${fabricantes}" 
+                        th:value="${fabricante}" th:text="${fabricante.razaoSocial}">Fabricante 1</option>
+                <option>Fabricante 2</option>
+                <option>Fabricante 3</option>
+            </select>
+				
+				
+				
+			<button type="submit" class="btn btn-primary">Adicionar</button>
+		</div>
+	</form>
+
+</body>
+</html>

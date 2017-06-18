@@ -9,26 +9,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.mmartini.gestao.model.Fornecedor;
+import br.com.mmartini.gestao.model.Produto;
+import br.com.mmartini.gestao.repository.FabricanteRepository;
 import br.com.mmartini.gestao.repository.FornecedorRepository;
+import br.com.mmartini.gestao.repository.ProdutoRepository;
 
 @Controller
-@RequestMapping("/cadastro/fornecedor")
-public class FornecedorController {
+@RequestMapping("/cadastro/produto")
+public class ProdutoController {
 	
 	@Autowired
+	private ProdutoRepository produtos;
+	@Autowired
 	private FornecedorRepository fornecedores;
+	@Autowired
+	private FabricanteRepository fabricantes;
+	
 	
 	@GetMapping
 	private ModelAndView listar(){
-		ModelAndView mv = new ModelAndView("/cadastro/Fornecedor");
-		mv.addObject("fornecedores", fornecedores.findAll());
-		mv.addObject(new Fornecedor());
+		ModelAndView mv = new ModelAndView("/cadastro/Produto");
+		mv.addObject("fabricantes", fabricantes.findAll());
+		mv.addObject(new Produto());
 		return mv;
 	}
 	
 	@GetMapping("editar/{id}")
 	public ModelAndView edit(@PathVariable("id") Long id) {
-		ModelAndView mv = new ModelAndView("cadastro/Fornecedor");
+		ModelAndView mv = new ModelAndView("cadastro/Produto");
 		mv.addObject("fornecedores", fornecedores.findAll());		
 		return mv.addObject(fornecedores.findOne(id));
 	}
@@ -43,7 +51,8 @@ public class FornecedorController {
 	@PostMapping
 	private String salvar(Fornecedor f){
 		fornecedores.save(f);
-		return "redirect:/cadastro/fornecedor";
+		return "redirect:/cadastro/produto";
 	}
+
 
 }
