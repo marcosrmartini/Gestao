@@ -17,8 +17,16 @@
 </head>
 <body>
 	
-	<form class="form-inline" method="POST" th:object="${produto}"
-		th:action="@{/cadastro/produto}" style="margin: 20px 0">
+	<form class="form-inline" method="POST" th:object="${produto}" th:action="@{/cadastro/produto}" style="margin: 20px 0">
+		<div class="form-group">
+			<button type="button" class="btn btn-primary">Novo</button>
+			<button type="submit" class="btn btn-primary">Salvar</button>
+		</div>
+		<div class="form-group pull-right">
+			<button type="button" class="btn btn-primary">Pesquisar</button>
+		</div>
+	<br/>	<br/>
+
 		<div class="form-group">
 			<input type="hidden" class="form-control" placeholder="Id"
 				th:field="*{idProduto}" /> 
@@ -31,10 +39,17 @@
                 <option>Fabricante 2</option>
                 <option>Fabricante 3</option>
             </select>
+
+			<select class="form-control" placeholder="Fornecedor" th:field="*{Fornecedor}" th:remove="all-but-first">
+                <option th:each="fornecedor : ${fornecedores}" 
+                        th:value="${fornecedor}" th:text="${fornecedor.razaoSocial}">Fornecedor 1</option>
+                <option>Fornecedor 2</option>
+                <option>Fornecedor 3</option>
+            </select>
 				
 				
 				
-			<button type="submit" class="btn btn-primary">Adicionar</button>
+			
 		</div>
 	</form>
 

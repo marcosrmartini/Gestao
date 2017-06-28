@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Pesquisa produto</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+<script type="text/javascript" src="webjars/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" th:src="@{/js/global.js}"></script>
+
+</head>
+<body>
+	
+	<form class="form-inline" method="POST" th:object="${produto}"
+		th:action="@{/cadastro/produto}" style="margin: 20px 0">
+		<div class="form-group">
+			<input type="text" style="min-width:600px;" class="form-control" placeholder="Descrição do produto"/> 
+			<button class="btn btn-primary">Pesquisar</button>
+		</div>
+	</form>
+
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Lista de produtos</h1>
+		</div>
+
+		<div class="panel-body">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Descrição</th>
+						<th>Fabricante</th>
+						<th>Fornecedor</th>
+						<th>Grupo</th>
+						<th>Alterar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="produto : ${produtos}">
+						<td th:text="${produto.descricao}"></td>
+						<td th:text="${produto.fabricante.razaoSocial}"></td>
+						<td th:text="${produto.fornecedor.razaoSocial}"></td>
+						<td th:text="${produto.grupo.descricao}"></td>
+						<td> <a href="#" class="btn btn-sm btn-primary" th:href="${'produto/editar/' + produto.idProduto}">Alterar</a> </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

@@ -29,7 +29,9 @@ public class ProdutoController {
 	@GetMapping
 	private ModelAndView listar(){
 		ModelAndView mv = new ModelAndView("/cadastro/Produto");
+		mv.addObject("produtos", produtos.findAll());
 		mv.addObject("fabricantes", fabricantes.findAll());
+		mv.addObject("fornecedores", fornecedores.findAll());		
 		mv.addObject(new Produto());
 		return mv;
 	}
