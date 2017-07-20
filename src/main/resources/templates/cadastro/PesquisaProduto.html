@@ -20,7 +20,7 @@
 	<form class="form-inline" method="POST" th:object="${produto}"
 		th:action="@{/cadastro/produto/pesquisaProduto}" style="margin: 20px 0">
 		<div class="form-group">
-			<input type="text" style="min-width:600px;" class="form-control" placeholder="Descrição do produto"/> 
+			<input type="text" th:field="*{descricao}" style="min-width:600px;" class="form-control" placeholder="Descrição do produto"/> 
 			<button class="btn btn-primary">Pesquisar</button>
 		</div>
 	</form>
@@ -44,9 +44,9 @@
 				<tbody>
 					<tr th:each="produto : ${produtos}">
 						<td th:text="${produto.descricao}"></td>
-						<td th:text="${produto.fabricante.razaoSocial}"></td>
-						<td th:text="${produto.fornecedor.razaoSocial}"></td>
-						<td th:text="${produto.grupo.descricao}"></td>
+<!-- 						<td th:text="${produto.fabricante.razaoSocial}"></td> -->
+<!-- 						<td th:text="${produto.fornecedor.razaoSocial}"></td> -->
+<!-- 						<td th:text="${produto.grupo.descricao}"></td> -->
 						<td> <a href="#" class="btn btn-sm btn-primary" th:href="${'produto/editar/' + produto.idProduto}">Alterar</a> </td>
 					</tr>
 				</tbody>
