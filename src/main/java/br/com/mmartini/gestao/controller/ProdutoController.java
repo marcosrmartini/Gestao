@@ -1,5 +1,7 @@
 package br.com.mmartini.gestao.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +35,21 @@ public class ProdutoController {
 		mv.addObject("fabricantes", fabricantes.findAll());
 		mv.addObject("fornecedores", fornecedores.findAll());		
 		mv.addObject(new Produto());
+		return mv;
+	}
+	
+	@GetMapping("abrirPesquisa")
+	private ModelAndView abrirPesquisaProduto(){
+		ModelAndView mv = new ModelAndView("/cadastro/PesquisaProduto");
+		mv.addObject(new Produto());
+		return mv;
+	}
+
+	@PostMapping("pesquisaProduto")
+	private ModelAndView pesquisaProduto(HttpServletRequest request){
+		ModelAndView mv = new ModelAndView("/cadastro/PesquisaProduto");
+		Produto p = (Produto) request.getSession().getAttribute("produto");
+		mv.addObject("produtos", produtos.pesquisaPorDescricao("%" + p.getDescricao().toUpperCase() + "%"));
 		return mv;
 	}
 	

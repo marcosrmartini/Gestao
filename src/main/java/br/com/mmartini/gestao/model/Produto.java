@@ -7,9 +7,14 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+@NamedQueries({
+	@NamedQuery(name = "pesquisaPorDescricao", query = "select p from Produto p where upper(p.descricao) like :descricao")
+})
 @Entity
 public class Produto implements Serializable {
 
