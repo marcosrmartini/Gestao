@@ -44,10 +44,10 @@
 				<tbody>
 					<tr th:each="produto : ${produtos}">
 						<td th:text="${produto.descricao}"></td>
-<!-- 						<td th:text="${produto.fabricante.razaoSocial}"></td> -->
-<!-- 						<td th:text="${produto.fornecedor.razaoSocial}"></td> -->
-<!-- 						<td th:text="${produto.grupo.descricao}"></td> -->
-						<td> <a href="#" class="btn btn-sm btn-primary" th:href="${'produto/editar/' + produto.idProduto}">Alterar</a> </td>
+						<td th:text="${produto.fabricante != null ? produto.fabricante.razaoSocial : ''}"></td>
+						<td th:text="${produto.fornecedor != null ? produto.fornecedor.razaoSocial : ''}"></td>
+						<td th:text="${produto.grupo != null ? produto.grupo.descricao : ''}"></td>
+						<td> <a href="#" class="btn btn-sm btn-primary" th:href="${'editar/' + produto.idProduto}">Alterar</a> </td>
 					</tr>
 				</tbody>
 			</table>

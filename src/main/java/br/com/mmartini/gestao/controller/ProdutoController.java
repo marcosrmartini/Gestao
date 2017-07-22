@@ -54,21 +54,22 @@ public class ProdutoController {
 	@GetMapping("editar/{id}")
 	public ModelAndView edit(@PathVariable("id") Long id) {
 		ModelAndView mv = new ModelAndView("cadastro/Produto");
+		mv.addObject("fabricantes", fabricantes.findAll());
 		mv.addObject("fornecedores", fornecedores.findAll());		
-		return mv.addObject(fornecedores.findOne(id));
+		return mv.addObject(produtos.findOne(id));
 	}
 
 	@GetMapping("deletar/{id}")
 	public String delete(@PathVariable("id") Long id) {
-		fornecedores.delete(id);
-		return "redirect:/cadastro/fornecedor";
+		produtos.delete(id);
+		return "redirect:/cadastro/produto";
 	}
 
 	
 	@PostMapping
-	private String salvar(Fornecedor f){
-		fornecedores.save(f);
-		return "redirect:/cadastro/produto";
+	private String salvar(Produto p){
+		produtos.save(p);
+		return "redirect:/cadastro/produto/editar/" + p.getIdProduto();
 	}
 
 

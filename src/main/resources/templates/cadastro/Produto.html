@@ -23,7 +23,7 @@
 			<button type="submit" class="btn btn-primary">Salvar</button>
 		</div>
 		<div class="form-group pull-right">
-			<button type="button" class="btn btn-primary" onclick="location.href='produto/abrirPesquisa'" >Pesquisar</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='/cadastro/produto/abrirPesquisa'" >Pesquisar</button>
 		</div>
 	<br/>	<br/>
 
@@ -33,18 +33,16 @@
 			<input type="text" class="form-control" placeholder="Descrição"
 				th:field="*{descricao}" /> 
 				
-			<select class="form-control" placeholder="Fabricante" th:field="*{fabricante}" th:remove="all-but-first">
-                <option th:each="fabricante : ${fabricantes}" 
-                        th:value="${fabricante}" th:text="${fabricante.razaoSocial}">Fabricante 1</option>
-                <option>Fabricante 2</option>
-                <option>Fabricante 3</option>
+			<select class="form-control" placeholder="Fabricante" th:field="*{fabricante}">
+                <option value="" th:text="#{common.select.prompt}"></option>
+                <option th:each="f : ${fabricantes}" 
+                        th:value="${f.idFabricante}" th:text="${f.razaoSocial}">Fabricante 1</option>
             </select>
 
-			<select class="form-control" placeholder="Fornecedor" th:field="*{Fornecedor}" th:remove="all-but-first">
+			<select class="form-control" placeholder="Fornecedor" th:field="*{Fornecedor}">
+				<option value="" th:text="#{common.select.prompt}"></option>
                 <option th:each="fornecedor : ${fornecedores}" 
-                        th:value="${fornecedor}" th:text="${fornecedor.razaoSocial}">Fornecedor 1</option>
-                <option>Fornecedor 2</option>
-                <option>Fornecedor 3</option>
+                        th:value="${fornecedor.idFornecedor}" th:text="${fornecedor.razaoSocial}">Fornecedor 1</option>
             </select>
 				
 				
@@ -52,6 +50,5 @@
 			
 		</div>
 	</form>
-
 </body>
 </html>
