@@ -16,7 +16,6 @@ public class TabelaPreco implements Serializable {
 	private Long idTabelaPreco;
 	private String descricao;
 	private double margemLucro;
-	private BigDecimal preco;
 
 	public Long getIdTabelaPreco() {
 		return idTabelaPreco;
@@ -42,12 +41,5 @@ public class TabelaPreco implements Serializable {
 		this.margemLucro = margemLucro;
 	}
 
-	public BigDecimal getPreco() {
-		return preco;
-	}
-
-	public void setPreco(BigDecimal preco) {
-		this.preco = preco;
-	}
 
 }

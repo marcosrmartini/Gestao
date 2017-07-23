@@ -41,10 +41,18 @@
 
 			<select class="form-control" placeholder="Fornecedor" th:field="*{Fornecedor}">
 				<option value="" th:text="#{common.select.prompt}"></option>
-                <option th:each="fornecedor : ${fornecedores}" 
-                        th:value="${fornecedor.idFornecedor}" th:text="${fornecedor.razaoSocial}">Fornecedor 1</option>
+                <option th:each="f : ${fornecedores}" 
+                        th:value="${f.idFornecedor}" th:text="${f.razaoSocial}">Fornecedor 1</option>
+            </select>
+
+			<select class="form-control" placeholder="Grupo" th:field="*{grupo}">
+				<option value="" th:text="#{common.select.prompt}"></option>
+                <option th:each="g : ${grupos}" 
+                        th:value="${g.idGrupo}" th:text="${g.descricao}">Grupo 1</option>
             </select>
 				
+			<input type="text" class="form-control" placeholder="Valor compra"
+				th:field="*{valorCompra}" /> 
 				
 				
 			

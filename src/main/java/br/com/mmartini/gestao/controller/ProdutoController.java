@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.mmartini.gestao.model.Fornecedor;
 import br.com.mmartini.gestao.model.Produto;
 import br.com.mmartini.gestao.repository.FabricanteRepository;
 import br.com.mmartini.gestao.repository.FornecedorRepository;
+import br.com.mmartini.gestao.repository.GrupoRepository;
 import br.com.mmartini.gestao.repository.ProdutoRepository;
 
 @Controller
@@ -25,6 +25,8 @@ public class ProdutoController {
 	private FornecedorRepository fornecedores;
 	@Autowired
 	private FabricanteRepository fabricantes;
+	@Autowired
+	private GrupoRepository grupos;
 	
 	
 	@GetMapping
@@ -32,7 +34,8 @@ public class ProdutoController {
 		ModelAndView mv = new ModelAndView("/cadastro/Produto");
 		mv.addObject("produtos", produtos.findAll());
 		mv.addObject("fabricantes", fabricantes.findAll());
-		mv.addObject("fornecedores", fornecedores.findAll());		
+		mv.addObject("fornecedores", fornecedores.findAll());
+		mv.addObject("grupos", grupos.findAll());		
 		mv.addObject(new Produto());
 		return mv;
 	}

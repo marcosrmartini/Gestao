@@ -29,8 +29,8 @@ public class Produto implements Serializable {
 	private Fornecedor fornecedor;
 	@OneToOne
 	private Grupo grupo;
-	@OneToMany
-	private List<TabelaPreco> tabelaPreco;
+	@OneToOne
+	private TabelaPreco tabelaPreco;
 	private BigDecimal valorCompra;
 	
 
@@ -74,11 +74,11 @@ public class Produto implements Serializable {
 		this.grupo = grupo;
 	}
 
-	public List<TabelaPreco> getTabelaPreco() {
+	public TabelaPreco getTabelaPreco() {
 		return tabelaPreco;
 	}
 
-	public void setTabelaPreco(List<TabelaPreco> tabelaPreco) {
+	public void setTabelaPreco(TabelaPreco tabelaPreco) {
 		this.tabelaPreco = tabelaPreco;
 	}
 
