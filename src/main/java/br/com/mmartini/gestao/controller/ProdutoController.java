@@ -13,6 +13,7 @@ import br.com.mmartini.gestao.model.Produto;
 import br.com.mmartini.gestao.repository.FabricanteRepository;
 import br.com.mmartini.gestao.repository.FornecedorRepository;
 import br.com.mmartini.gestao.repository.GrupoRepository;
+import br.com.mmartini.gestao.repository.PrecoProdutoRepository;
 import br.com.mmartini.gestao.repository.ProdutoRepository;
 
 @Controller
@@ -27,7 +28,8 @@ public class ProdutoController {
 	private FabricanteRepository fabricantes;
 	@Autowired
 	private GrupoRepository grupos;
-	
+    @Autowired
+    private PrecoProdutoRepository precos;
 	
 	@GetMapping
 	private ModelAndView listar(){
@@ -58,12 +60,15 @@ public class ProdutoController {
 	public ModelAndView edit(@PathVariable("id") Long id) {
 		ModelAndView mv = new ModelAndView("cadastro/Produto");
 		mv.addObject("fabricantes", fabricantes.findAll());
-		mv.addObject("fornecedores", fornecedores.findAll());		
+		mv.addObject("fornecedores", fornecedores.findAll());
+		mv.addObject("precosProduto", precos.selecionarProduto(id));
+		mv.addObject("grupos", grupos.findAll());		
 		return mv.addObject(produtos.findOne(id));
 	}
 
 	@GetMapping("deletar/{id}")
 	public String delete(@PathVariable("id") Long id) {
+		precos.deletarProduto(id);
 		produtos.delete(id);
 		return "redirect:/cadastro/produto";
 	}
@@ -72,6 +77,7 @@ public class ProdutoController {
 	@PostMapping
 	private String salvar(Produto p){
 		produtos.save(p);
+		precos.inserirPrecos();
 		return "redirect:/cadastro/produto/editar/" + p.getIdProduto();
 	}
 

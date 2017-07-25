@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.mmartini.gestao.model.Grupo;
 import br.com.mmartini.gestao.model.TabelaPreco;
+import br.com.mmartini.gestao.repository.PrecoProdutoRepository;
 import br.com.mmartini.gestao.repository.TabelaPrecoRepository;
 
 @Controller
@@ -18,6 +19,9 @@ public class TabelaPrecoControler {
 	
 	@Autowired
 	private TabelaPrecoRepository tabelas;
+	
+	@Autowired
+	private PrecoProdutoRepository precos;
 	
 	@GetMapping
 	private ModelAndView listar(){
@@ -36,6 +40,7 @@ public class TabelaPrecoControler {
 
 	@GetMapping("deletar/{id}")
 	public String delete(@PathVariable("id") Long id) {
+		precos.deletarTabelaPreco(id);
 		tabelas.delete(id);
 		return "redirect:/cadastro/tabela_preco";
 	}
@@ -44,6 +49,7 @@ public class TabelaPrecoControler {
 	@PostMapping
 	private String salvar(TabelaPreco t){
 		tabelas.save(t);
+		precos.inserirPrecos();
 		return "redirect:/cadastro/tabela_preco";
 	}
 	

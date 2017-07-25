@@ -57,6 +57,38 @@
 				
 			
 		</div>
+		
+	
+		
 	</form>
+	
+	
+	
+		<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Preços do produto</h1>
+		</div>
+
+		<div class="panel-body">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Tabela</th>
+						<th>Margem de lucro</th>
+						<th>Preço</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="pp : ${precosProduto}">
+						<td th:text="${pp.tabela.descricao}"></td>
+						<td th:text="${pp.margemLucro}"></td>
+						<td th:text="${pp.preco}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	
 </body>
 </html>
