@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Pesquisa de clientes</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+<script type="text/javascript" src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" th:src="@{/js/global.js}"></script>
+
+</head>
+<body>
+	
+	<form class="form-inline" method="POST" th:object="${cliente}"
+		th:action="@{/cadastro/cliente/pesquisaCliente}" style="margin: 20px 0">
+		<div class="form-group">
+			<input type="text" th:field="*{nome}" style="min-width:600px;" class="form-control" placeholder="Nome do cliente"/> 
+			<input type="text" th:field="*{cpf}" style="min-width:600px;" class="form-control" placeholder="CPF do cliente"/> 
+			<button class="btn btn-primary">Pesquisar</button>
+		</div>
+	</form>
+
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Lista de clientes</h1>
+		</div>
+
+		<div class="panel-body">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>CPF</th>
+						<th>Telefone</th>
+						<th>Endereco</th>
+						<th>Numero</th>
+						<th>Bairro</th>
+						<th>CEP</th>
+						<th>Cidade</th>
+						<th>Estado</th>
+												
+						<th>Alterar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="c : ${clientes}">
+						<td th:text="${c.nome}"></td>
+						<td th:text="${c.cpf}"></td>
+						<td th:text="${c.telefone}"></td>
+						<td th:text="${c.endereco}"></td>
+						<td th:text="${c.numero}"></td>
+						<td th:text="${c.bairro}"></td>
+						<td th:text="${c.cep}"></td>
+						<td th:text="${c.cidade}"></td>
+						<td th:text="${c.estado}"></td>
+
+						<td> <a href="#" class="btn btn-sm btn-primary" th:href="${'editar/' + c.idCliente}">Alterar</a> </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
