@@ -15,6 +15,7 @@ import br.com.mmartini.gestao.repository.FornecedorRepository;
 import br.com.mmartini.gestao.repository.GrupoRepository;
 import br.com.mmartini.gestao.repository.PrecoProdutoRepository;
 import br.com.mmartini.gestao.repository.ProdutoRepository;
+import br.com.mmartini.gestao.repository.TabelaPrecoRepository;
 
 @Controller
 @RequestMapping("/cadastro/produto")
@@ -30,6 +31,8 @@ public class ProdutoController {
 	private GrupoRepository grupos;
     @Autowired
     private PrecoProdutoRepository precos;
+    @Autowired
+    private TabelaPrecoRepository tabelas;
 	
 	@GetMapping
 	private ModelAndView listar(){
@@ -37,7 +40,8 @@ public class ProdutoController {
 		mv.addObject("produtos", produtos.findAll());
 		mv.addObject("fabricantes", fabricantes.findAll());
 		mv.addObject("fornecedores", fornecedores.findAll());
-		mv.addObject("grupos", grupos.findAll());		
+		mv.addObject("grupos", grupos.findAll());
+		mv.addObject("tabelasPreco", tabelas.findAll());
 		mv.addObject(new Produto());
 		return mv;
 	}
@@ -63,6 +67,7 @@ public class ProdutoController {
 		mv.addObject("fornecedores", fornecedores.findAll());
 		mv.addObject("precosProduto", precos.selecionarProduto(id));
 		mv.addObject("grupos", grupos.findAll());		
+		mv.addObject("tabelasPreco", tabelas.findAll());		
 		return mv.addObject(produtos.findOne(id));
 	}
 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Cadastro de clientes</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+<script type="text/javascript" src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" th:src="@{/js/global.js}"></script>
+
+</head>
+<body>
+	
+	<form class="form-inline" method="POST" th:object="${cliente}"
+		th:action="@{/cadastro/cliente}" style="margin: 20px 0">
+		<div class="form-group">
+			<input type="hidden" class="form-control" placeholder="Id"
+				th:field="*{idCliente}" /> 
+			<input type="text" class="form-control" placeholder="Nome"
+				th:field="*{nome}" /> 
+			<input type="text" class="form-control" placeholder="CPF"
+				th:field="*{cpf}" /> 
+			<input type="text" class="form-control" placeholder="Endereço"
+				th:field="*{endereco}" /> 
+			<input type="text" class="form-control" placeholder="Bairro"
+				th:field="*{bairro}" /> 
+			<input type="text" class="form-control" placeholder="Numero"
+				th:field="*{numero}" /> 
+			<input type="text" class="form-control" placeholder="CEP"
+				th:field="*{cep}" /> 
+			<input type="text" class="form-control" placeholder="Cidade"
+				th:field="*{cidade}" /> 
+			<input type="text" class="form-control" placeholder="Estado"
+				th:field="*{estado}" /> 
+			<input type="text" class="form-control" placeholder="Telefone"
+				th:field="*{telefone}" /> 
+			<button type="submit" class="btn btn-primary">Adicionar</button>
+		</div>
+	</form>
+
+</body>
+</html>

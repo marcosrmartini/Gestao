@@ -2,7 +2,9 @@ package br.com.mmartini.gestao.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -13,9 +15,9 @@ public class PrecoProduto {
 	@Id
 	@GeneratedValue
 	private Long idPrecoProduto;
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	private TabelaPreco tabela;
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	private Produto produto;
 	private double margemLucro;
 	private BigDecimal preco;
@@ -60,4 +62,13 @@ public class PrecoProduto {
 		this.preco = preco;
 	}
 
+	@Override
+	public String toString() {
+		return "PrecoProduto [idPrecoProduto=" + idPrecoProduto + ", tabela="
+				+ tabela + ", produto=" + produto + ", margemLucro="
+				+ margemLucro + ", preco=" + preco + "]";
+	}
+
+	
+	
 }

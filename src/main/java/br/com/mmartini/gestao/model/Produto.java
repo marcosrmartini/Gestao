@@ -89,7 +89,17 @@ public class Produto implements Serializable {
 	public void setValorCompra(BigDecimal valorCompra) {
 		this.valorCompra = valorCompra;
 	}
+
+	@Override
+	public String toString() {
+		return "Produto [idProduto=" + idProduto + ", descricao=" + descricao
+				+ ", fabricante=" + fabricante + ", fornecedor=" + fornecedor
+				+ ", grupo=" + grupo + ", tabelaPreco=" + tabelaPreco
+				+ ", valorCompra=" + valorCompra + "]";
+	}
 	
 	
 
+	
+	
 }

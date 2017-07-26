@@ -9,7 +9,7 @@
 	rel="stylesheet" />
 <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"
 	rel="stylesheet" />
-<script type="text/javascript" src="webjars/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/webjars/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript" th:src="@{/js/global.js}"></script>
@@ -51,6 +51,13 @@
                         th:value="${g.idGrupo}" th:text="${g.descricao}">Grupo 1</option>
             </select>
 				
+			<select class="form-control" placeholder="Tabela de preço" th:field="*{tabelaPreco}">
+				<option value="" th:text="#{common.select.prompt}"></option>
+                <option th:each="tp : ${tabelasPreco}" 
+                        th:value="${tp.idTabelaPreco}" th:text="${tp.descricao}">Grupo 1</option>
+            </select>
+
+
 			<input type="text" class="form-control" placeholder="Valor compra"
 				th:field="*{valorCompra}" /> 
 				
@@ -76,6 +83,7 @@
 						<th>Tabela</th>
 						<th>Margem de lucro</th>
 						<th>Preço</th>
+						<th>Ação</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -83,6 +91,7 @@
 						<td th:text="${pp.tabela.descricao}"></td>
 						<td th:text="${pp.margemLucro}"></td>
 						<td th:text="${pp.preco}"></td>
+						<td> <a href="#" class="btn btn-sm btn-primary" th:href="${'/cadastro/preco_produto/editar/' + pp.idPrecoProduto}">Alterar</a> </td>						
 					</tr>
 				</tbody>
 			</table>
