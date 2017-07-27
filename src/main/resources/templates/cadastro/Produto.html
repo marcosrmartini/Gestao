@@ -5,6 +5,16 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
 <title>Cadastro de produtos</title>
+<style type="text/css">
+	
+	.jumbotron {
+		width: 800px;
+		margin-top: 20px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+</style>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
 	rel="stylesheet" />
 <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"
@@ -17,59 +27,79 @@
 </head>
 <body>
 	
-	<form class="form-inline" method="POST" th:object="${produto}" th:action="@{/cadastro/produto}" style="margin: 20px 0">
-		<div class="form-group">
-			<button type="button" class="btn btn-primary">Novo</button>
-			<button type="submit" class="btn btn-primary">Salvar</button>
-		</div>
-		<div class="form-group pull-right">
-			<button type="button" class="btn btn-primary" onclick="location.href='/cadastro/produto/abrirPesquisa'" >Pesquisar</button>
-		</div>
-	<br/>	<br/>
+	<div class="jumbotron"> 
 
-		<div class="form-group">
-			<input type="hidden" class="form-control" placeholder="Id"
-				th:field="*{idProduto}" /> 
-			<input type="text" class="form-control" placeholder="Descrição"
-				th:field="*{descricao}" /> 
+		<form class="form-inline" method="POST" th:object="${produto}" th:action="@{/cadastro/produto}" style="margin: 20px 0">
+			<div class="form-group">
+				<button type="button" class="btn btn-primary" onclick="location.href='/cadastro/produto'">Novo</button>
+				<button type="submit" class="btn btn-primary">Salvar</button>
+				<div th:if="${produto.idProduto != null}">
+				    <a href="#" class="btn btn-sm btn-danger" th:href="${'/cadastro/produto/deletar/' + produto.idProduto}">Excluir</a>
+				</div>
 				
-			<select class="form-control" placeholder="Fabricante" th:field="*{fabricante}">
-                <option value="" th:text="#{common.select.prompt}"></option>
-                <option th:each="f : ${fabricantes}" 
-                        th:value="${f.idFabricante}" th:text="${f.razaoSocial}">Fabricante 1</option>
-            </select>
+			</div>
+			<div class="form-group pull-right">
+				<a href="#" class="btn btn-sm btn-primary" th:href="${'/cadastro/produto/abrirPesquisa'}">Pesquisar</a>
+<!-- 				<button type="button" class="btn btn-primary" onclick="location.href='/cadastro/produto/abrirPesquisa'" >Pesquisar</button> -->
+			</div>
+		<br/>	<br/>
 
-			<select class="form-control" placeholder="Fornecedor" th:field="*{Fornecedor}">
-				<option value="" th:text="#{common.select.prompt}"></option>
-                <option th:each="f : ${fornecedores}" 
-                        th:value="${f.idFornecedor}" th:text="${f.razaoSocial}">Fornecedor 1</option>
-            </select>
-
-			<select class="form-control" placeholder="Grupo" th:field="*{grupo}">
-				<option value="" th:text="#{common.select.prompt}"></option>
-                <option th:each="g : ${grupos}" 
-                        th:value="${g.idGrupo}" th:text="${g.descricao}">Grupo 1</option>
-            </select>
+			<div class="form-group">
+				<input type="hidden" class="form-control" placeholder="Id"
+					th:field="*{idProduto}" /> 
+		
+		    <table>
+			    <tr>
+			    	<td><span class="label label-default">Descrição:</span></td>
+			    	<td><input type="text" class="form-control" placeholder="Descrição"
+					th:field="*{descricao}" style="min-width:600px;"/></td>		    	
+			    </tr>
+			    <tr>
+			    	<td><span class="label label-default">Fabricante:</span></td>
+			    	<td><select class="form-control" placeholder="Fabricante" th:field="*{fabricante}">
+	                <option value="" th:text="#{common.select.prompt}"></option>
+	                <option th:each="f : ${fabricantes}" 
+	                        th:value="${f.idFabricante}" th:text="${f.razaoSocial}">Fabricante 1</option>
+	            </select></td>		    	
+			    </tr>
+			    <tr>
+			    	<td><span class="label label-default">Fornecedor:</span></td>
+			    	<td><select class="form-control" placeholder="Fornecedor" th:field="*{Fornecedor}">
+					<option value="" th:text="#{common.select.prompt}"></option>
+	                <option th:each="f : ${fornecedores}" 
+	                        th:value="${f.idFornecedor}" th:text="${f.razaoSocial}">Fornecedor 1</option>
+	            </select></td>		    	
+			    </tr>
+			    <tr>
+			    	<td><span class="label label-default">Grupo:</span></td>
+			    	<td><select class="form-control" placeholder="Grupo" th:field="*{grupo}">
+					<option value="" th:text="#{common.select.prompt}"></option>
+	                <option th:each="g : ${grupos}" 
+	                        th:value="${g.idGrupo}" th:text="${g.descricao}">Grupo 1</option>
+	            </select></td>		    	
+			    </tr>
+			    <tr>
+			    	<td><span class="label label-default">Tabela de preço</span></td>
+			    	<td><select class="form-control" placeholder="Tabela de preço" th:field="*{tabelaPreco}">
+					<option value="" th:text="#{common.select.prompt}"></option>
+	                <option th:each="tp : ${tabelasPreco}" 
+	                        th:value="${tp.idTabelaPreco}" th:text="${tp.descricao}">Tabela de preço 1</option>
+	            </select></td>		    	
+			    </tr>
+			    <tr>
+			    	<td><span class="label label-default">Valor de compra</span></td>
+			    	<td><input type="text" class="form-control" placeholder="Valor compra"
+					th:field="*{valorCompra}" /></td>
+			    </tr>
+		    </table>
 				
-			<select class="form-control" placeholder="Tabela de preço" th:field="*{tabelaPreco}">
-				<option value="" th:text="#{common.select.prompt}"></option>
-                <option th:each="tp : ${tabelasPreco}" 
-                        th:value="${tp.idTabelaPreco}" th:text="${tp.descricao}">Grupo 1</option>
-            </select>
-
-
-			<input type="text" class="form-control" placeholder="Valor compra"
-				th:field="*{valorCompra}" /> 
-				
-				
+			</div>
 			
-		</div>
 		
-	
-		
-	</form>
-	
-	
+			
+		</form>
+		<a href="#" class="btn btn-sm btn-primary" th:href="${'/index'}">Voltar</a>
+	</div>
 	
 		<div class="panel panel-default" style="margin: 10px">
 		<div class="panel-heading">

@@ -31,6 +31,7 @@
 			<input type="text" class="form-control" placeholder="Preço"
 				th:field="*{preco}" /> 
 			<button type="submit" class="btn btn-primary">Alterar</button>
+			<a href="#" class="btn btn-sm btn-primary" th:href="${'/cadastro/produto/editar/' + precoProduto.produto.idProduto}">Voltar</a>
 		</div>
 	</form>
 

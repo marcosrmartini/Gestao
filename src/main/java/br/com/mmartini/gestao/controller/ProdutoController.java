@@ -75,6 +75,7 @@ public class ProdutoController {
 	public String delete(@PathVariable("id") Long id) {
 		precos.deletarProduto(id);
 		produtos.delete(id);
+		System.out.println("Deletando produto " + id);
 		return "redirect:/cadastro/produto";
 	}
 

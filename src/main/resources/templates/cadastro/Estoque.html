@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
-<title>Cadastro de fornecedores</title>
+<title>Cadastro de estoques</title>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
 	rel="stylesheet" />
 <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"
@@ -17,17 +17,17 @@
 </head>
 <body>
 	
-	<form class="form-inline" method="POST" th:object="${fornecedor}"
-		th:action="@{/cadastro/fornecedor}" style="margin: 20px 0">
+	<form class="form-inline" method="POST" th:object="${estoque}"
+		th:action="@{/cadastro/estoque}" style="margin: 20px 0">
 		<div class="form-group">
 			<input type="hidden" class="form-control" placeholder="Id"
-				th:field="*{idFornecedor}" /> 
-			<input type="text" class="form-control" placeholder="Razão Social"
-				th:field="*{razaoSocial}" /> 
-			<input type="text" class="form-control" placeholder="Nome Fantasia"
-				th:field="*{nomeFantasia}" /> 
-			<input type="text" class="form-control" placeholder="CNPJ"
-				th:field="*{cnpj}" /> 
+				th:field="*{idEstoque}" /> 
+			<input type="text" class="form-control" placeholder="Descrição"
+				th:field="*{descricao}" /> 
+			<input type="text" class="form-control" placeholder="Estoque minimo"
+				th:field="*{estoqueMinimo}" /> 
+			<input type="text" class="form-control" placeholder="Estoque Maximo"
+				th:field="*{estoqueMaximo}" /> 
 			<button type="submit" class="btn btn-primary">Adicionar</button>
 			<a href="#" class="btn btn-sm btn-primary" th:href="${'/index'}">Voltar</a>
 		</div>
@@ -35,28 +35,27 @@
 
 	<div class="panel panel-default" style="margin: 10px">
 		<div class="panel-heading">
-			<h1 class="panel-title">Lista de fornecedores</h1>
+			<h1 class="panel-title">Lista de Fabricantes</h1>
 		</div>
 
 		<div class="panel-body">
 			<table class="table">
 				<thead>
 					<tr>
-						<th>Razão Social</th>
-						<th>Nome Fantasia</th>
-						<th>CNPJ</th>
-						<th>Editar</th>
-						<th>Remover</th>
+						<th>Descrição</th>
+						<th>Estoque minimo</th>
+						<th>Estoque maximo</th>
+						<th>Alterar</th>
+						<th>Excluir</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="fornecedor : ${fornecedores}">
-						<td th:text="${fornecedor.razaoSocial}"></td>
-						<td th:text="${fornecedor.nomeFantasia}"></td>
-						<td th:text="${fornecedor.cnpj}"></td>
-						<td> <a href="#" class="btn btn-sm btn-primary" th:href="${'fornecedor/editar/' + fornecedor.idFornecedor}">Alterar</a> </td>
-						<td> <a href="#" class="delete btn btn-sm btn-danger" th:href="${'fornecedor/deletar/' + fornecedor.idFornecedor}">Excluir</a> </td>
-						
+					<tr th:each="e : ${estoques}">
+						<td th:text="${e.descricao}"></td>
+						<td th:text="${e.estoqueMinimo}"></td>
+						<td th:text="${e.estoqueMaximo}"></td>
+						<td> <a href="#" class="btn btn-sm btn-primary" th:href="${'estoque/editar/' + e.idEstoque}">Alterar</a> </td>
+						<td> <a href="#" class="delete btn btn-sm btn-danger" th:href="${'estoque/editar/' + e.idEstoque}">Excluir</a> </td>
 					</tr>
 				</tbody>
 			</table>

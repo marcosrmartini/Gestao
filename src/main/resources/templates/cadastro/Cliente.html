@@ -30,7 +30,10 @@
 	
 	<form class="form-inline" method="POST" th:object="${cliente}"
 		th:action="@{/cadastro/cliente}" style="margin: 20px 0">
-
+		<div class="form-group">
+				<button type="button" class="btn btn-primary" th:href="${'/cadastro/cliente'}">Novo</button>
+				<button type="submit" class="btn btn-primary">Salvar</button>
+		</div>
 		<div class="form-group pull-right">
 			<button type="button" class="btn btn-primary" onclick="location.href='/cadastro/cliente/abrirPesquisa'" >Pesquisar</button>
 		</div>
@@ -80,18 +83,10 @@
 		    </tr>
 		    </table>
 
-			
-			
-			 
-			
-			 
-			
-			
-			 
-			<button type="submit" class="btn btn-primary">Gravar</button>
 	</div>
+
 		</div> 
 	</form>
-
+<a href="#" class="btn btn-sm btn-primary" th:href="${'/index'}">Voltar</a>
 </body>
 </html>
