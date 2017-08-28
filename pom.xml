@@ -15,7 +15,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.4.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
@@ -24,9 +24,15 @@
 		<java.version>1.7</java.version>
 	</properties>
 
+
+
+
+
 	<dependencies>
-	
-			<dependency>
+
+
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
@@ -48,8 +54,8 @@
 			<artifactId>jquery</artifactId>
 			<version>3.1.1</version>
 		</dependency>
-	
-	
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -83,9 +89,78 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.joinfaces/jsf-spring-boot-starter -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.joinfaces</groupId> -->
+		<!-- <artifactId>jsf-spring-boot-starter</artifactId> -->
+		<!-- <version>2.0.0</version> -->
+		<!-- </dependency> -->
+
+
+
+		<!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.primefaces</groupId> -->
+		<!-- <artifactId>primefaces</artifactId> -->
+		<!-- <version>6.1</version> -->
+		<!-- </dependency> -->
+
+
+
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-impl</artifactId>
+			<version>2.2.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-api</artifactId>
+			<version>2.2.12</version>
+		</dependency>
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache.tomcat.embed</groupId> -->
+		<!-- <artifactId>tomcat-embed-jasper</artifactId> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.ocpsoft.rewrite</groupId> -->
+		<!-- <artifactId>rewrite-servlet</artifactId> -->
+		<!-- <version>3.4.1.Final</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.ocpsoft.rewrite</groupId> -->
+		<!-- <artifactId>rewrite-integration-faces</artifactId> -->
+		<!-- <version>3.4.1.Final</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.ocpsoft.rewrite</groupId> -->
+		<!-- <artifactId>rewrite-config-prettyfaces</artifactId> -->
+		<!-- <version>3.4.1.Final</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.primefaces</groupId> -->
+		<!-- <artifactId>primefaces</artifactId> -->
+		<!-- <version>6.1</version> -->
+		<!-- </dependency> -->
+
 	</dependencies>
 
 	<build>
+		<!-- <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory> -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

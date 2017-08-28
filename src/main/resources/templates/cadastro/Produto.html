@@ -155,7 +155,7 @@
 			<h1 class="panel-title">Historico do estoque do produto</h1>
 		</div>
 		<div>
-			<select class="form-control" placeholder="Estoque" style="min-width:200px;"  ng-model="estoque">
+			<select id="cboEstoque" class="form-control" placeholder="Estoque" style="min-width:200px;" ng-init="estoque = 1"  ng-model="estoque">
 		    	<option th:each="e : ${estoques}" th:value="${e.idEstoque}" th:text="${e.descricao}">Estoque 1</option>
 	    	</select>
 		</div>	
@@ -185,6 +185,18 @@
 	
 	{{estoque}}
 </body>
+
+<script type="text/javascript">
+	// Devido ao ng-model não vem um valor padrao entao o codigo abaixo seta o primeiro registro
+	
+	$(document).ready(function() {
+		var cboEstoque = document.getElementById("cboEstoque");
+		cboEstoque.selectedIndex = 1;
+		
+	});
+
+</script>
+
 </html>
 
 

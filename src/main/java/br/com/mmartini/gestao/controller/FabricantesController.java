@@ -42,7 +42,7 @@ public class FabricantesController {
 	@PostMapping
 	public String salvar(Fabricante fabricante) {
 		fabricantes.save(fabricante);
-		return "redirect:/cadastro/fabricante";
+		return "redirect:/cadastro/fabricante/editar/" + fabricante.getIdFabricante();
 	}
 
 }
