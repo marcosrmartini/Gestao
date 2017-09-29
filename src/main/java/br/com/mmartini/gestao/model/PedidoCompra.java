@@ -2,7 +2,7 @@ package br.com.mmartini.gestao.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -22,7 +22,7 @@ public class PedidoCompra implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "id_fornecedor")
 	private Fornecedor fornecedor;
-	private Date data;
+	private LocalDate data;
 
 	private BigDecimal frete;
 	private BigDecimal desconto;
@@ -50,11 +50,11 @@ public class PedidoCompra implements Serializable {
 		this.fornecedor = fornecedor;
 	}
 
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 

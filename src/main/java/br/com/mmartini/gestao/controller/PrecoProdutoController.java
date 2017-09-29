@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.mmartini.gestao.model.Fabricante;
 import br.com.mmartini.gestao.model.PrecoProduto;
 import br.com.mmartini.gestao.repository.PrecoProdutoRepository;
 

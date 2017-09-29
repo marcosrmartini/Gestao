@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Preço do produto</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+<script type="text/javascript" src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" th:src="@{/js/global.js}"></script>
+
+</head>
+<body>
+	
+	<form class="form-inline" method="POST" th:object="${precoProduto}"
+		th:action="@{/cadastro/preco_produto}" style="margin: 20px 0">
+		<div class="form-group">
+			<input type="hidden" class="form-control" placeholder="Id"
+				th:field="*{idPrecoProduto}" />
+			<input type="hidden" class="form-control" placeholder="Produto"
+				th:field="*{produto}" />
+			<input type="hidden" class="form-control" placeholder="Tabela"
+				th:field="*{tabela}" />
+			<input type="text" class="form-control" placeholder="Margem Lucro"
+				th:field="*{margemLucro}" /> 
+			<input type="text" class="form-control" placeholder="Preço"
+				th:field="*{preco}" /> 
+			<button type="submit" class="btn btn-primary">Alterar</button>
+			<a href="#" class="btn btn-sm btn-primary" th:href="${'/cadastro/produto/editar/' + precoProduto.produto.idProduto}">Voltar</a>
+		</div>
+	</form>
+
+
+</body>
+</html>

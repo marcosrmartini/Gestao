@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html ng-app="PedidoCompra" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Pedido de compra</title>
+<style type="text/css">
+.jumbotron {
+	width: 800px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+</style>
+
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+<script type="text/javascript" src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" th:src="@{/js/global.js}"></script>
+<script type="text/javascript" src="../../static/angular/angular.js"
+th:src="@{/angular/angular.js}"></script>
+<script type="text/javascript" src="../../static/angular/angular-messages.js"
+th:src="@{/angular/angular-messages.js}"></script>
+
+
+	 <script type="text/javascript">
+		
+			angular.module("PedidoCompra", ["ngMessages"]);	
+			angular.module("PedidoCompra").controller("pedidoCompraCtrl", function($scope, $http){
+				$scope.app = "Pedido de compras";
+				$scope.pedido = {};
+			
+				$scope.adicionarPedido = function (pedido) {
+					
+					$http.post("http://localhost:8080/compras/pedido_compra", pedido).success(function (data) {
+						delete $scope.ṕedido;
+						$scope.frmPedidoCompra.$setPristine();
+						carregarPedido(pedido.idPedidoCompra);
+				});
+
+				$scope.carregarPedido = function (pedido) {
+					$http.post("http://localhost:8080/compras/pedido_compra/" + pedido.idPedidoCompra).success(function (data) {
+						$scope.ṕedido = data;
+				});
+
+				
+			};
+
+
+
+				
+			
+			});
+		
+		
+		
+		</script>
+
+
+</head>
+<body ng-controller="pedidoCompraCtrl">
+
+	<form name="frmPedidoCompra" style="margin: 20px 0">
+
+		<div class="jumbotron">
+
+
+			<div class="form-group">
+				<button type="submit" ng-click="adicionarPedido(pedido)" class="btn btn-primary">Gravar</button>
+				<a href="/index" class="btn btn-sm btn-primary" >Voltar</a>
+			</div>
+
+			<div class="form-group">
+
+
+				<input type="hidden" class="form-control" placeholder="Id"
+					ng-model="pedido.idPedidoCompra" />
+
+				<table>
+					<tr>
+						<td><span class="label label-default">Fornecedor:</span></td>
+						<td><input type="text" class="form-control"
+							placeholder="Fornecedor" ng-model="pedido.fornecedor" /></td>
+					</tr>
+					<tr>
+						<td><span class="label label-default">Data:</span></td>
+						<td><input type="text" class="form-control"
+							placeholder="Data" ng-model="pedido.data" /></td>
+					</tr>
+					<tr>
+						<td><span class="label label-default">Frete:</span></td>
+						<td><input type="text" class="form-control"
+							placeholder="Frete" ng-model="pedido.frete" /></td>
+					</tr>
+					<tr>
+						<td><span class="label label-default">Desconto:</span></td>
+						<td><input type="text" class="form-control"
+							placeholder="Desconto" ng-model="pedido.desconto" /></td>
+					</tr>
+					<tr>
+						<td><span class="label label-default">Total produtos:</span></td>
+						<td><input type="text" class="form-control"
+							placeholder="TotalProdutos" ng-model="pedido.totalProdutos" /></td>
+					</tr>
+					<tr>
+						<td><span class="label label-default">Valor total:</span></td>
+						<td><input type="text" class="form-control"
+							placeholder="Valor total" ng-model="pedido.valorTotal" /></td>
+					</tr>
+					<tr>
+						<td><span class="label label-default">baixado:</span></td>
+						<td><input type="checkbox" class="form-control"
+							placeholder="Baixado" ng-model="pedido.baixado" /></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+
+
+
+		<div class="panel panel-default" style="margin: 10px">
+			<div class="panel-heading">
+				<h1 class="panel-title">Itens do pedido</h1>
+			</div>
+
+			<div class="panel-body">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Produto</th>
+							<th>Quantidade</th>
+							<th>Valor</th>
+							<th>Excluir</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="item in pedido.itens">
+							<td th:text={{item.produto}}></td>
+							<td th:text={{item.quantidade}}></td>
+							<td th:text={{item.valorTotal}}></td>
+							<td><a href="#" class="delete btn btn-sm btn-danger">Excluir</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

@@ -6,7 +6,6 @@
 	<groupId>br.com.mmartini</groupId>
 	<artifactId>gestao</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
 
 	<name>Gestao</name>
 	<description>ERP</description>
@@ -16,13 +15,13 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.4.RELEASE</version>
 		<relativePath />
-<!-- 		lookup parent from repository -->
+		<!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.7</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
@@ -87,6 +86,18 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Para trabalhar com localDate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-java8</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+		</dependency>
+		<!-- Para trabalhar com localDate -->
 
 	</dependencies>
 

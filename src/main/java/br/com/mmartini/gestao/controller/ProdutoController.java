@@ -9,13 +9,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.mmartini.gestao.model.HistoricoEstoqueProduto;
 import br.com.mmartini.gestao.model.Produto;
-import br.com.mmartini.gestao.repository.EstoqueProdutoRepository;
 import br.com.mmartini.gestao.repository.EstoqueRepository;
 import br.com.mmartini.gestao.repository.FabricanteRepository;
 import br.com.mmartini.gestao.repository.FornecedorRepository;

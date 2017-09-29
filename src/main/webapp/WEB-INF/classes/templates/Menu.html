@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Menu principal</title>
+<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+<script type="text/javascript" src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" th:src="@{/js/global.js}"></script>
+
+</head>
+<body>
+
+<br/><br/><br/><br/>
+
+<nav class="navbar navbar-default" role="navigation">
+   <div class="container">
+   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+         <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Cadastros<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+               <li><a href="#" th:href="@{cadastro/cliente}">Cliente</a></li>
+               <li><a href="#" th:href="@{cadastro/fabricante}">Fabricante</a></li>
+               <li><a href="#" th:href="@{cadastro/fornecedor}">Fornecedor</a></li>
+               <li><a href="#" th:href="@{cadastro/produto}">Produto</a></li>
+               <li><a href="#" th:href="@{cadastro/grupo}">Grupo</a></li>
+               <li class="divider"></li>
+               <li><a href="#" th:href="@{cadastro/tabela_preco}">Tabela de preço</a></li>
+               <li><a href="#" th:href="@{cadastro/estoque}">Estoque</a></li>               
+            </ul>
+          </li>
+          <li><a href="#">Fale Conosco</a></li>
+       </ul>
+    </div><!-- /.navbar-collapse -->
+                                              
+    </div>
+</nav>
+
+
+</body>
+</html>
+

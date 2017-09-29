@@ -32,18 +32,20 @@
 	angular.module("cadastroProduto", []);	
 
 	angular.module("cadastroProduto").controller("listaProdutosController", function($scope, $http){
-		var carregaHistoricoEstoque = function (){
-					$http.get("http://localhost:8080/cadastro/produto/historicoEstoque").then(function(result){
-						$scope.historicoEstoque = result.data;
-						console.log(result.data);
-					});
-				};
-				
-					
-			
-				carregaHistoricoEstoque();
 
+		var carregaHistoricoEstoque = function (){
+			$http.get("http://localhost:8080/cadastro/produto/historicoEstoque").then(function(result){
+				$scope.historicoEstoque = result.data;
+				console.log(result.data);
+			});
+		};
+		
+			
+	
+		carregaHistoricoEstoque();
 	});
+
+
 
 </script>
 

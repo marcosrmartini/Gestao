@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Pedido de compra</title>
+<style type="text/css">
+.jumbotron {
+	width: 800px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+</style>
+
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+<script type="text/javascript" src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" th:src="@{/js/global.js}"></script>
+
+</head>
+<body>
+
+	<form class="form-inline" method="POST" th:object="${pedido}"
+		th:action="@{/compras/pedido_compra}" style="margin: 20px 0">
+
+		<div class="jumbotron">
+
+
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">Gravar</button>
+				<a href="#" class="btn btn-sm btn-primary" th:href="${'/index'}">Voltar</a>
+			</div>
+
+			<div class="form-group">
+
+
+				<input type="hidden" class="form-control" placeholder="Id"
+					th:field="*{idPedidoCompra}" />
+
+				<table>
+					<tr>
+						<td><span class="label label-default">Fornecedor:</span></td>
+						<td><input type="text" class="form-control"
+							placeholder="Fornecedor" th:field="*{fornecedor}" /></td>
+					</tr>
+					<tr>
+						<td><span class="label label-default">Data:</span></td>
+						<td><input type="text" class="form-control"
+							placeholder="Data" th:field="*{data}" /></td>
+					</tr>
+					<tr>
+						<td><span class="label label-default">Frete:</span></td>
+						<td><input type="text" class="form-control"
+							placeholder="Frete" th:field="*{frete}" /></td>
+					</tr>
+					<tr>
+						<td><span class="label label-default">Desconto:</span></td>
+						<td><input type="text" class="form-control"
+							placeholder="Desconto" th:field="*{desconto}" /></td>
+					</tr>
+					<tr>
+						<td><span class="label label-default">Total produtos:</span></td>
+						<td><input type="text" class="form-control"
+							placeholder="TotalProdutos" th:field="*{totalProdutos}" /></td>
+					</tr>
+					<tr>
+						<td><span class="label label-default">Valor total:</span></td>
+						<td><input type="text" class="form-control"
+							placeholder="Valor total" th:field="*{valorTotal}" /></td>
+					</tr>
+					<tr>
+						<td><span class="label label-default">baixado:</span></td>
+						<td><input type="checkbox" class="form-control"
+							placeholder="Baixado" th:field="*{baixado}" /></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+
+
+
+		<div class="panel panel-default" style="margin: 10px">
+			<div class="panel-heading">
+				<h1 class="panel-title">Itens do pedido</h1>
+			</div>
+
+			<div class="panel-body">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Produto</th>
+							<th>Quantidade</th>
+							<th>Valor</th>
+							<th>Alterar</th>
+							<th>Excluir</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="item : ${pedido.itens}">
+							<td th:text="${item.produto}"></td>
+							<td th:text="${item.quantidade}"></td>
+							<td th:text="${item.valorTotal}"></td>
+							<td><a href="#" class="btn btn-sm btn-primary"
+								th:href="${'fabricante/editar/' + fabricante.idFabricante}">Alterar</a>
+							</td>
+							<td><a href="#" class="delete btn btn-sm btn-danger"
+								th:href="${'fabricante/deletar/' + fabricante.idFabricante}">Excluir</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</form>
+</body>
+</html>
