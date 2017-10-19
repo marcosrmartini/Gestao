@@ -35,29 +35,41 @@ th:src="@{/angular/angular-messages.js}"></script>
 		
 			angular.module("PedidoCompra", ["ngMessages"]);	
 			angular.module("PedidoCompra").controller("pedidoCompraCtrl", function($scope, $http){
+
+
 				$scope.app = "Pedido de compras";
 				$scope.pedido = {};
+				$scope.fornecedores = [];
+				
+				var endpoint = "http://localhost:8080/compras/pedido_compra";
+				var endpointFornecedor = "http://localhost:8080/cadastro/fornecedor2";
 			
+
 				$scope.adicionarPedido = function (pedido) {
 					
-					$http.post("http://localhost:8080/compras/pedido_compra", pedido).success(function (data) {
-						delete $scope.ṕedido;
+					$http.post(endpoint, pedido).then(function(result){
+						console.log(result.data);
+						delete $scope.pedido;	
 						$scope.frmPedidoCompra.$setPristine();
 						carregarPedido(pedido.idPedidoCompra);
-				});
+					});
+
+				};
 
 				$scope.carregarPedido = function (pedido) {
-					$http.post("http://localhost:8080/compras/pedido_compra/" + pedido.idPedidoCompra).success(function (data) {
-						$scope.ṕedido = data;
-				});
+					$http.get(endpoint + "/" + pedido.idPedidoCompra ).then(function(result){
+						$scope.pedido = result.data;
+					});
+				};
 
+				var carregarFornecedores = function () {
+					$http.get(endpointFornecedor).then(function(result){
+						$scope.fornecedores = result.data;
+					});
+				};
 				
-			};
 
-
-
-				
-			
+				carregarFornecedores();
 			});
 		
 		
@@ -87,8 +99,11 @@ th:src="@{/angular/angular-messages.js}"></script>
 				<table>
 					<tr>
 						<td><span class="label label-default">Fornecedor:</span></td>
-						<td><input type="text" class="form-control"
-							placeholder="Fornecedor" ng-model="pedido.fornecedor" /></td>
+						<td>
+							<select class="form-control" ng-model="pedido.fornecedor" ng-options="fornecedor.idFornecedor as fornecedor.nomeFantasia for fornecedor in fornecedores">
+								<option value="">Selecione um fornecedor</option>	
+							</select>
+						</td>
 					</tr>
 					<tr>
 						<td><span class="label label-default">Data:</span></td>
@@ -144,9 +159,9 @@ th:src="@{/angular/angular-messages.js}"></script>
 					</thead>
 					<tbody>
 						<tr ng-repeat="item in pedido.itens">
-							<td th:text={{item.produto}}></td>
-							<td th:text={{item.quantidade}}></td>
-							<td th:text={{item.valorTotal}}></td>
+							<td>{{item.produto}}</td>
+							<td>{{item.quantidade}}></td>
+							<td>{{item.valorTotal}}></td>
 							<td><a href="#" class="delete btn btn-sm btn-danger">Excluir</a>
 							</td>
 						</tr>

@@ -15,9 +15,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 //"/static/**", "/css/**", "/js/**", "/images/**")
 //		http.authorizeRequests().antMatchers().permitAll();
-		http.authorizeRequests().antMatchers("/", "/home", "/webjars/**", "/static/**", "/css/**", "/js/**", "/images/**").permitAll()
+		http.authorizeRequests().antMatchers("/", "/home", "/compras/pedido_compra", "/webjars/**", "/static/**", "/css/**", "/js/**", "/images/**").permitAll()
 				.anyRequest().authenticated().and().formLogin()
 				.loginPage("/login").permitAll().and().logout().permitAll();
+		http.csrf().disable();
 	}
 
 	@Autowired
